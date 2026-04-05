@@ -1,21 +1,54 @@
 # Servy
 
-**TODO: Add description**
+A minimal HTTP server built with pure Elixir and the Erlang runtime.
 
-## Installation
+This project is designed to refresh core fundamentals of Elixir, including:
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `servy` to your list of dependencies in `mix.exs`:
+* processes and concurrency (BEAM model)
+* pattern matching
+* recursion
+* raw TCP sockets via `:gen_tcp`
 
-```elixir
-def deps do
-  [
-    {:servy, "~> 0.1.0"}
-  ]
-end
+No frameworks, no abstractions
+
+---
+
+## Running the Server
+
+Start an interactive shell:
+
+```bash
+iex -S mix
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/servy>.
+Then run:
 
+```elixir
+Servy.start(4000)
+```
+
+You should see:
+
+```
+Listening on http://localhost:4000
+```
+
+---
+
+## Try it out
+
+In another terminal:
+
+```bash
+curl http://localhost:4000/
+curl http://localhost:4000/health
+```
+
+---
+
+## What this project demonstrates
+
+* Handling HTTP over raw TCP
+* Spawning a process per request
+* Parsing request lines manually
+* Building HTTP responses from scratch
